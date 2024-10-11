@@ -11,31 +11,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Check out the code from the repository
     - uses: actions/checkout@v3
 
-    # Set up Python 3.9 (or your specific version)
     - name: Set up Python 3.9
       uses: actions/setup-python@v4
       with:
         python-version: '3.9'
 
-    # Install dependencies from the requirements.txt file
     - name: Install dependencies
       run: |
         python -m venv env  # Create virtual environment
         source env/bin/activate  # Activate virtual environment
         pip install --upgrade pip
-        pip install -r requirements.txt  # Install dependencies from the requirements.txt
+        pip install -r requirements.txt  # Install dependencies
 
-    # Run the web application locally
     - name: Run the web application
       run: |
-        source env/bin/activate  # Ensure the environment is activated
+        source env/bin/activate  # Activate virtual environment
         make run &  # Run the application in the background
         sleep 10  # Allow some time for the server to start
 
-    # Test if the application is running correctly by hitting the localhost
-    - name: Check the server
+    - name: Test the server
       run: |
         curl http://localhost:3000
