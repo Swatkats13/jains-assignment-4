@@ -1,5 +1,7 @@
 install:
-    pip install -r requirements.txt
+	python3 -m venv env
+	. env/bin/activate && pip install -r requirements.txt
 
 run:
-    FLASK_APP=app.py FLASK_ENV=development ./env/bin/flask run --port 3000
+	. env/bin/activate && python app.py
+
