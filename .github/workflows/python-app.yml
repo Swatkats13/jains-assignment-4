@@ -30,8 +30,6 @@ jobs:
         . env/bin/activate  # Activate virtual environment
         nohup make run &  # Run the application in the background with nohup
         sleep 60  # Allow some time for the server to start
-    - name: Check if app started successfully
-      run: cat app_output.log  # Show server output to debug
 
     - name: Test the server
       run: |
